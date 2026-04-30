@@ -1,5 +1,18 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for, request, redirect, session
+from flask_mysqldb import MySQL
+import MySQLdb.cursors
+import re
+
+
 app = Flask(__name__)
+
+app.secret_key = 'adcæøå'
+app.config['MYSQL_HOST'] = 'localhost'
+app.config['MYSQL_USER'] = 'root'
+app.config['MYSQL_PASSWORD'] = ''
+app.config['MYSQL_DB'] = 'user-system'
+
+mysql = MySQL(app)
 
 @app.route("/")
 def main():
